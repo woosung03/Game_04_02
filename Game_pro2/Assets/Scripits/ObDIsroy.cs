@@ -11,7 +11,7 @@ public class ObDIsroy : MonoBehaviour //time up ball disroy
     void Start()
     {
         ObBalls = GetComponent<Transform>(); //ObBall position
-        float randomTime = Random.Range(5.0f, 10.0f); // 랜덤한 시간 설정 (5초 ~ 10초 사이)
+        float randomTime = Random.Range(10.0f, 20.0f); // 랜덤한 시간 설정 (5초 ~ 10초 사이)
         speed = Random.Range(2.0f, 10.0f); // 랜덤한 스퓨ㅣ드 설정 (0.05f ~ 1.0f)
         StartCoroutine(DestroySelf(randomTime));  //Obstacle ball destroy
     }
@@ -25,6 +25,6 @@ public class ObDIsroy : MonoBehaviour //time up ball disroy
     IEnumerator DestroySelf(float delay)
     {
         yield return new WaitForSeconds(delay); // 랜덤 시간 후 파괴
-        Destroy(this.gameObject);
+        Destroy(this.gameObject); //ObBall destroy
     }
 }

@@ -8,6 +8,10 @@ public class BallMove : MonoBehaviour
     Rigidbody2D rigidBall; //Physics engine call
     public float fullSpeed; //Ball fullSpeed box
     public float JumpForce; //Jump strength
+    public int MaxJumpCount; //Jump count
+
+    private bool isJumpBlocked = false;
+    private float jumpBlockTime = 2f; // 입력 차단 시간 (초)
     void Awake()
     {
         rigidBall = GetComponent<Rigidbody2D>(); //  Find and return
@@ -16,10 +20,19 @@ public class BallMove : MonoBehaviour
 
     void Update()
     {
-       
-        if (Input.GetButtonDown("Jump")) // Button space
+        
+        if (Input.GetButtonDown("Jump") && !isJumpBlocked) // Button space
         {
-            rigidBall.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // Apply jump
+            StartCoroutine(BlockJumpInput());
+
+
+            for (int i=0; i < MaxJumpCount; i++) // Jump count limit
+            {
+                rigidBall.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse); // Apply jump
+            }
+            
+           
+
         }   
 
 
@@ -45,5 +58,12 @@ public class BallMove : MonoBehaviour
         else if (rigidBall.linearVelocity.x < fullSpeed * (-1)) 
             rigidBall.linearVelocity = new Vector2(fullSpeed * (-1), rigidBall.linearVelocity.y); 
 
+    }
+
+    IEnumerator BlockJumpInput()
+    {
+        isJumpBlocked = true;
+        yield return new WaitForSeconds(jumpBlockTime);
+        isJumpBlocked = false;
     }
 }

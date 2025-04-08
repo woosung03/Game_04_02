@@ -317,6 +317,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ballxy: {fileID: 1830863916}
   CameraSpeed: 3
+  limitCamera1: {x: 0, y: 0}
+  limitCamera2: {x: 0, y: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +482,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.78, y: 0.78, z: 0}
+  m_ChunkCullingBounds: {x: 0.78, y: 1.42, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -764,7 +766,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.78, y: 0.78, z: 0}
+  m_ChunkCullingBounds: {x: 0.78, y: 1.42, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -1099,7 +1101,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1169,8 +1171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a95fccf9f169f2947b3c68d63a97d55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullSpeed: 5
-  JumpForce: 5
+  fullSpeed: 7
+  JumpForce: 2
+  MaxJumpCount: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
